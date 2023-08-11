@@ -1,23 +1,13 @@
-import React, {useState, useEffect}  from 'react';
+import React from 'react';
 import './App.css';
-import getGifs from './services/getGifs';
+import ListOfGifs from './components/ListOfGifs';
 
-function App() {
-  const [gifs, setGifs] = useState([]);
-
-  useEffect(() => {
-    getGifs().then(gifs => setGifs(gifs))
-  }, [])
-  
+export default function App() {
   return (
     <div className="App">
       <section className="App-content">
-        {
-          gifs.map(singleGif => <img src={singleGif} />)
-        }
+        <ListOfGifs keyword={'vegeta'} />
       </section>
     </div>
-  );
+  )
 }
-
-export default App;

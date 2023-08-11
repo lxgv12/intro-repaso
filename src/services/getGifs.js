@@ -8,7 +8,12 @@ export default function getGifs({keyword = 'kitty black'} = {}) {
     .then(res => res.json())
     .then(response => {
        const {data} = response
-       const gifs = data.map(image => image.images.fixed_width.url)
+       const gifs = data.map(image => 
+        {
+            const {images, title, id} = image 
+            const {url} = images.fixed_width
+            return {title, id, url}
+        })
        return gifs
     })
 }
